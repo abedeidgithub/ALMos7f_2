@@ -1,6 +1,9 @@
 package com.example.abedeid.almos7f;
 
+import android.app.FragmentManager;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,41 +18,39 @@ import java.util.List;
 public class RecyleViewAdapter extends RecyclerView.Adapter<RecyleViewAdapter.MyHolder> {
     private Context context;
     List<mp3quran> mp3quren;
-Communicator communicator;
-    public RecyleViewAdapter(List<mp3quran> mp3quren,Context context) {
-        this.context = context;
+    souraFragment f;
+    FragmentManager manager;
+    public RecyleViewAdapter(List<mp3quran> mp3quren, Context context) {
+        this.context =  context;
         this.mp3quren = mp3quren;
     }
 
     @Override
     public RecyleViewAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card,null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card, null);
         return new MyHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(RecyleViewAdapter.MyHolder holder, int position) {
-       String Lan= mp3quren.get(position).getLanguage();
-        final String json=mp3quren.get(position).getJson();
-        final String Sura_name=mp3quren.get(position).getSura_name();
-        holder.name.setText(Lan.substring(1,Lan.length()));
-         holder.name.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                souraFragment f=new souraFragment();
-                 communicator.send(json,Sura_name);
-//                 Toast.makeText(context, json, Toast.LENGTH_SHORT).show();
-//                 Toast.makeText(context, Sura_name, Toast.LENGTH_SHORT).show();
+    public void onBindViewHolder(final RecyleViewAdapter.MyHolder holder, int position) {
 
-             }
-         });
+        String Lan = mp3quren.get(position).getLanguage();
+        final String json = mp3quren.get(position).getJson();
+        final String Sura_name = mp3quren.get(position).getSura_name();
+        holder.name.setText(Lan.substring(1, Lan.length()));
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f= new souraFragment();
+                Bundle args = new Bundle();
+                args.putString("jsonKey", json);
+                f.setArguments(args);
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().add(R.id.home,f).commit();
+
+            }
+        });
     }
-//    public void animate(RecyclerView.ViewHolder viewHolder) {
-//        final Animation animAnticipateOvershoot = AnimationUtils.loadAnimation(context, R.anim.bounce_interpolator);
-//        viewHolder.itemView.setAnimation(animAnticipateOvershoot);
-//    }
-
     @Override
     public int getItemCount() {
         return mp3quren.size();

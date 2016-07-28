@@ -20,11 +20,7 @@ import retrofit2.Response;
 public class Home extends Fragment {
     RecyclerView recyclerView;
     private RecyclerView adapter;
-    Communicator communicator;
 
-    public void setCommunicator(Communicator communicator) {
-        this.communicator = communicator;
-    }
 
     @Nullable
     @Override
