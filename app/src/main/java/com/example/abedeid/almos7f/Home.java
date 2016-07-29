@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Home extends Fragment {
+public class Home extends Fragment{
     RecyclerView recyclerView;
     private RecyclerView adapter;
 
@@ -41,7 +41,7 @@ public class Home extends Fragment {
                 List<mp3quran> list = response.body().getMp3quranList();
                 RecyleViewAdapter adapter = new RecyleViewAdapter(list, getContext());
                 recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
 
             }
 
@@ -53,6 +53,7 @@ public class Home extends Fragment {
 
         return v;
     }
+
 
 
 }

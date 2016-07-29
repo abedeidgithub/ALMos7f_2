@@ -1,9 +1,6 @@
 package com.example.abedeid.almos7f;
 
-import android.app.FragmentManager;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +15,9 @@ import java.util.List;
 public class RecyleViewAdapter extends RecyclerView.Adapter<RecyleViewAdapter.MyHolder> {
     private Context context;
     List<mp3quran> mp3quren;
-    souraFragment f;
-    FragmentManager manager;
+
     public RecyleViewAdapter(List<mp3quran> mp3quren, Context context) {
-        this.context =  context;
+        this.context = context;
         this.mp3quren = mp3quren;
     }
 
@@ -42,19 +38,18 @@ public class RecyleViewAdapter extends RecyclerView.Adapter<RecyleViewAdapter.My
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                f= new souraFragment();
-                Bundle args = new Bundle();
-                args.putString("jsonKey", json);
-                f.setArguments(args);
-                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().add(R.id.home,f).commit();
+//                itemListener.recyclerViewListClicked(v, json);
+
 
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return mp3quren.size();
     }
+
 
     public static class MyHolder extends RecyclerView.ViewHolder {
         private TextView name;

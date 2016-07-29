@@ -15,11 +15,11 @@ public class souraFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_soura, container, false);
-        txt = (TextView)view.findViewById(R.id.text);
-
-        Bundle bundle=this.getArguments();
-        String jsonKey = bundle.getString("jsonKey");
-        txt.setText(jsonKey);
+//        txt = (TextView)view.findViewById(R.id.text);
+//
+//        Bundle bundle=this.getArguments();
+//        String jsonKey = bundle.getString("jsonKey");
+//        txt.setText(jsonKey);
         return view;
     }
 }
