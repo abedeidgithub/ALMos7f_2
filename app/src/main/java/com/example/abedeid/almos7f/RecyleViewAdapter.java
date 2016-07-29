@@ -38,8 +38,7 @@ public class RecyleViewAdapter extends RecyclerView.Adapter<RecyleViewAdapter.My
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                itemListener.recyclerViewListClicked(v, json);
-
+//TODO json & soura_name to SouraFragment
 
             }
         });
